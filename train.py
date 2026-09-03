@@ -1,0 +1,91 @@
+from envirolment import envirolment 
+from network import Network
+from agent import agent
+import numpy as np
+import os
+import torch
+
+envirolmentes_in_list=[ envirolment(15,15,14,14,-1,-500,1000,25,100) for _ in range(5)]
+gamma=0.7
+learning_rate=0.01
+path="checkpoint.pth"
+
+def reset_path(path):
+    if os.path.exists(path):
+        os.remove(path)
+        print("path is removed")
+    else:
+        print("path doesnt exist yet")
+def load_checkpoint(model,agent):
+    if os.path.exists(path):
+        checkpoint=torch.load(path,map_location="cpu")
+        model.load_state_dict(checkpoint["model_weightes"])
+        agent.optimiser.load_state_dict(checkpoint["optimiser_data"])
+        start_episode=checkpoint["final_episode"]+1
+        print(f"episodes started at the {start_episode+1}")
+    else:
+        print("path yet not started now created")
+    return model,agent
+
+def trainer(episodes_given,max_step,no_of_env):
+    main_network=Network(15*15,4,20,4)
+    agent_in_work=agent(main_network,learning_rate=0.01,gamma=0.9)
+    main_network,agent_in_work=load_checkpoint(main_network,agent_in_work)
+    count=0
+    for episode in range(episodes_given):
+        print(f"episode {episode}")
+        print(f"----------start {count}----------")
+        episode_loss_avg=[]
+        seer=0
+        for env in envirolmentes_in_list:
+            state=env.reset()
+            print(state)
+            log_probes=[]
+            rewardes=[]
+            #print("started")
+            for present_step_count in range(max_step):
+                action,log_prob=agent_in_work.thinker(env)
+                log_probes.append(log_prob)
+                reward,status_of_agent=env.step(action,present_step_count)
+                rewardes.append(reward)
+                if present_step_count==max_step-1:
+                    print("max step reched")
+                if status_of_agent==True:
+                    print("epiode_broked")
+                    seer+=1
+                    break
+            #print("ended")
+            episode_loss=agent_in_work.learner(log_probes,rewardes)
+            episode_loss_avg.append(episode_loss)
+            if seer==1:
+                seer=0
+                break
+        count+=1
+        total_loss_of_episode=sum(episode_loss_avg)/no_of_env
+        obb=agent_in_work.ubdater(total_loss_of_episode)
+        print(obb)
+        print(f"----------end {count}----------")
+    if os.path.exists(path):
+        checkpoint_for_episodes=torch.load(path,map_location="cpu")
+        episodes=checkpoint_for_episodes["final_episode"]
+        print(episodes+episodes_given-1)
+        torch.save({"model_weightes":main_network.state_dict(),"optimiser_data":agent_in_work.optimiser.state_dict(),"final_episode":episodes+episodes_given-1},path)
+    else:
+        torch.save({"model_weightes":main_network.state_dict(),"optimiser_data":agent_in_work.optimiser.state_dict(),"final_episode":episodes_given-1},path)
+        print(f"checkpoint saved at this episode {episodes_given-1}")
+
+reset_path(path)
+see=trainer(100,70,5)
+print("----------------------------------------------")
+see2=trainer(200,70,5)
+
+
+
+
+#it is not leanrnig from the histroy or it is learning wrong from the history ??
+#work on teh building of the wall make it a real walles
+#as i oberved the probabulity of the 1 is getting incresed which is the problem over the time it is thinking down is good over time
+###i think we have a problem in the loss function
+#    or we are not ubdting the weightes proparley---sol once see the compuational graph of it so we can understand in clear
+##after understaing some game it is learning going left and down is best thing best
+    #do it is making this due to the loss function which we are using??

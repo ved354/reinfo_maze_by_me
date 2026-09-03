@@ -1,0 +1,9 @@
+class agent:
+	def __init__(self,network,gamma,learning_rate):
+        self.global_network=network
+    def picker(self):
+        
+	def thinker(self,envireolment_data):
+        prob=self.global_network(envirolment_data)
+        action=
+	def learner(self):

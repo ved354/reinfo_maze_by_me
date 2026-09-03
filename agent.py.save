@@ -1,0 +1,10 @@
+import numpy as np
+
+class agent.py:
+	def __init__(self):
+		self.logs_prob=[]
+		self.rewardes=[]
+	def learner(self):
+		pass
+	def thinker(self):
+		

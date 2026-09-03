@@ -1,0 +1,48 @@
+from envirolment import envirolment 
+from network import Network
+from agent import agent
+import os 
+
+envirolmentes_in_list=[ envirolment(15,15,14,14,-1,-10,100,25,100) for _ in range(5)]
+gamma=0.9
+learning_rate=0.01
+path_name="checkpoint.pth"
+def save_network(self,path="checkpoint.pth"):
+    torch.save(main_network.state_dict(),path)
+
+def trainer(episodes_given,max_step,no_of_env):
+    if os.path.exists(path_name):
+        
+    for episode in range(episodes_given):
+        print(f"episode {episode}")
+        episode_loss_avg=[]
+        seer=0
+        for env in envirolmentes_in_list:
+            state=env.reset()
+            log_probes=[]
+            rewardes=[]
+            for present_step_count in range(max_step):
+                action,log_prob=agent_in_work.thinker(env)
+                log_probes.append(log_prob)
+                reward,status_of_agent=env.step(action,present_step_count)
+                rewardes.append(reward)
+                if status_of_agent==True:
+                     print("epiode_broked")
+                     seer+=1
+                     break
+            episode_loss=agent_in_work.learner(log_probes,rewardes)
+            episode_loss_avg.append(episode_loss)
+            if seer==1:
+                seer=0
+                break
+        total_loss_of_episode=sum(episode_loss_avg)/no_of_env
+        obb=agent_in_work.ubdater(total_loss_of_episode)
+        svae_network()
+        print(obb)
+
+main_network=Network(15*15,4,20,4)
+agent_in_work=agent(main_network,learning_rate=0.01,gamma=0.9)
+see=trainer(10,100,5)
+
+
+

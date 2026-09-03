@@ -1,0 +1,53 @@
+###FIRST INSPECT THE THINGES WHICH U HAVE BUILDED 
+        -AGNET
+        -ENVIROLMENT
+                    -actiones
+                            -0,1,2,3
+                            -how am i validing the actiones and connecting them to the reardes and are they valid
+                                --take an action
+                                --check wether it is valid or not [the action]
+                                --how we wre conncting the reward sytem to this statment 
+                                    ---good-general
+                                    ---bad-punisher
+                                    ---out of-do i need to do the bad or more than this ???????
+                    -walls
+                            -now only in the constant in the columes but random in the rowes
+                    -rewardes thinking
+                                    -good[genearal punisher]
+                                    -bad[wall punisher]
+                                    -out of spect[hard punisher???]
+                    -how the loss working
+                            --understand how the loss function is really working?
+                                --what do i mean by that????
+                                    -i mean how the loss function is in real working we are using the -ve loss to make the gradient fool baised on getting to the max point insted of the min point of the whole graph
+                                        --now how i am solving this??
+                                                -understanding
+                                                        
+                                                -implementaion
+                                                
+                                                        
+        -NETWORK
+                -what kind of the network can find the solution.
+                    -like first what kind of networkes exist and how we make them explict to understnad the basic patternes and how can i make them find complex apttern 
+        -LOSS FUNCTION
+                -understnad how the loss is working why we are using the "G" which is saying us the experience of  the loss from each point it was[like saying how much future reward did i got from this state which i took so the main this is to make this "G" more more postive]
+                    -understand the working of the "log"
+                    -understand the working of the "-"
+                    -understand the working of the "G"
+                    --from those understanding conncect the thinges 
+                        -understand hwo our loss is teaching to the model
+                            --how can we phycally see how our network is understanding and what it is understnading ?
+                            
+        -NETWORK WEIGHT UBDATION
+        
+        
+        
+        
+        
+###what i think
+- i think it is learning some how to be at the original place which is making it minimal loss
+    --how can i validate my statment? what is the proof for what u are saying?
+            the proofs can be ===
+            1)obersvation of loss
+                    a)see how in genreral the loss function really work on the rl
+                    b)coonect the "a" to how the really the loos is working with our loss which we are plotting withe the liveshower funtion

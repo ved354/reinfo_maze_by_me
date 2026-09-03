@@ -1,0 +1,86 @@
+import numpy as np
+class envirolment:
+	def __init__(self,rows,columes,target_row,target_col,general_punisher,wall_hitter_punisher,target_reward):
+		self.rows=rows
+		self.columes=columes
+		self.target_col=target_col
+		self.target_row=target_row
+		self.general_punisher=general_punisher
+		self.wall_hitter_punisher=wall_hitter_punisher
+		self.target_reward=target_reward
+		self.normal_punisher_rep=0
+		self.wall_punisher_rep=-1
+		self.target_value_rep=+1
+		self.maze=0
+		self.agent_row=0
+		self.agent_col=0
+	def maze_gen(self):
+		self.maze=np.full((self.rows,self.columes),self.normal_punisher_rep)
+#		return self.maze
+	def adding_walls_and_target(self,no_of_walls):
+		for _ in range(no_of_walls):
+			min_size=1
+			max_size=6
+			target_height=np.random.randint(min_size,max_size)
+			start_row=np.random.randint(0,self.rows-target_height)
+			end_row=start_row+target_height
+			column_number=np.random.randint(0,self.columes)
+			self.maze[start_row:end_row,column_number]=self.wall_punisher_rep
+		self.maze[self.target_row,self.target_col]=+1
+		if self.maze[0,0]==-1:
+			self.maze[0,0]=0
+		return self.maze
+	def checker(self,row_to_check,col_to_check):
+		if row_to_check<=self.rows-1 and rows_to_check>=0 and col_to_check<=self.columes and col_to_check>=0:
+			return True
+		else:
+			return False
+	def action(self,action):
+		#[rules 0 means up,1 means down ,2 means right ,3 means left]
+		if action ==0:
+			if checker(self.agent_row+1,self.agent_col)==True:
+				self.agent_row+=1
+				return (self.agent_row,self.agent_col)
+			else:
+				return "no action taken"
+		if action==1:
+			if checker(self.agent_row-1,self.agent_col)==True:
+				self.agent_row-=1
+                                return (self.agent_row,self.agent_col)
+                        else:
+                                return "no action taken"
+		if action==2:
+			if checker(self.agent_row,self.agent_col+1)==True:
+				self.agent_col+=1
+                                return (self.agent_row,self.agent_col)
+                        else:
+                                return "no action taken"
+		if action==3:
+			if checker(self.agent_row+1,self.agent_col-1)==True:
+				self.agent_col-=1
+                                return (self.agent_row,self.agent_col)
+                        else:
+                                return "no action taken"
+
+	def done(self,step_count):
+#		map={self.noraml_punisher_rep:self.general_punisher,self.wall_punisher_rep:self.wall_hitter_punisher,self.target_value_rep:self.target_reward}
+		checker=self.maze[self.agent_row:self.agent_col]
+		if checker==-1:
+			return True
+		elif(self.row==self.target_row and self.col==self.target_col):
+			return True
+		elif(self.max_step=step_count):
+			return True
+		else:
+			return False
+	def step(self,pred_action,step_count):
+		status=action(pred_action)
+		if status=="no action taken":
+			return False
+		else:
+	                map={self.noraml_punisher_rep:self.general_punisher,self.wall_punisher_rep:self.wall_hitter_punisher,self.target_value_rep:self.target_reward}
+			reward=maps[self.agent_row:self.agent_col]
+			status_of_done=done()
+			return reward,status_of_done
+
+##make more randomnes in the maze

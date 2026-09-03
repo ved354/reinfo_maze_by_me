@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+from collections import deque
+
+class liveplotter:
+    def __init__(self,window=200):
+        self.losses=deque(maxlen=window)
+        plt.ion()
+        self.fig,self.ax=plt.subplots(figsize=(6,4))
+    def plot_ubdater(self,loss):
+        self.losses.append(-(loss.detach().item()))
+        self.ax.clear()
+        self.ax.plot(self.losses)
+        self.ax.set_title("Loss (live)")
+        self.ax.set_xlabel("Step")
+        self.ax.set_ylabel("Loss")
+        plt.pause(0.001)
