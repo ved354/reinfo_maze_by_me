@@ -107,3 +107,4 @@ print(efficitency_cal(800))
 #how loss is becomming 0 even it is learning good
     #no that doesnt mean it is learning good
         #how???
+#hi
