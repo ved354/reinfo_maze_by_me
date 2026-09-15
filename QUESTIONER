@@ -1,6 +1,8 @@
-###FIRST INSPECT THE THINGES WHICH U HAVE BUILDED 
+###FIRST INSPECT THE THINGES WHICH U HAVE BUILDED------[I HAD GAVE MY REWARD SYAYTEM IN WRONG WAY FOR THE PUNISHMENT OF THE WALL HITTING] 
         -AGNET
         -ENVIROLMENT
+        	    -genrater of maze
+        	    	    -
                     -actiones
                             -0,1,2,3
                             -how am i validing the actiones and connecting them to the reardes and are they valid
@@ -46,8 +48,42 @@
         
 ###what i think
 - i think it is learning some how to be at the original place which is making it minimal loss
+[[like it was mistake i was rewarding the system in a wrong way like when i was rewarding good for hittting the wall so it have learned . this is due to a sigh change in teh code where i need to keep - insted i have kept + ]]
+
     --how can i validate my statment? what is the proof for what u are saying?
-            the proofs can be ===
+            the proofs can be ===[[instead of the - i kept the +]]
             1)obersvation of loss
                     a)see how in genreral the loss function really work on the rl
                     b)coonect the "a" to how the really the loos is working with our loss which we are plotting withe the liveshower funtion
+            2)do this have came due to the we are using the col constant and row random 
+            		--ok try this this might or not solve the problem ??[i got this due to the agent is learning to do DOWN,LEFT naa ]
+            		[[i dont know but i have tryed it have learned but i cant say that we cna just use it or not ]]
+            		
+-i think i have made an big mistake by thinking th ebaze is working from the down rather then working from the top
+	-in which area this might effect??
+		i think no segmentes it will effect i think so 
+		[[no spect it was effecing]]
+		
+###what deos the loss just going up and comming down even mean in the RL
+	
+
+###what does going like this mean[/home/vedanth-sai-ram/Pictures/Screenshots/Screenshot from 2026-09-03 22-46-04.png]. like why going down and comming up.
+###how can i contril the learning the agent like in the process of the learning it might become like it findes a patter that it apples over all teh envirolmentes and end in differnt cenario
+###what high spickes in the graph in the loss function and decrease in the spickes in the function [like hte sudden decrese in the graph]
+	-what it really say to us
+###what are these RNN and VAE and KEF
+###can we build something visuallise what is happening inside the network like what it  is seening and learning 
+###reward system amkes a big chnge in the model understanding . is ther a sytem that will help to understand the reward sytem of the networkes
+###why when ever teh curve go down it is going rapidley up
+##like think how cna we come out of a valley intermes of a valley. what does that valley deos say in termes of human spect like really to an human [what does that valley real meaning in terms to a human [this can be understood when we have the good understnading how the realtion withe weightes,loss,grapg withe loss and weightes means in termes of the human and to the tech which we have builded in the past ]].
+###how can we see the path of how those neurones are the part to give this output for those input
+
+
+
+###how it is even learning???
+	MDP is makeing them to learn but how??
+		figuring out.....
+		
+		agent envirolment boundarys menas what?
+		what thinges are considered to be outside of an agent like rewardes??
+		

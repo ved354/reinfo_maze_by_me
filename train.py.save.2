@@ -36,7 +36,7 @@ def load_checkpoint(model,agent):
 
 def trainer(episodes_given,max_step,no_of_env):
     main_network=Network(15*15,40,20,4)
-    agent_in_work=agent(main_network,learning_rate=0.0001,gamma=0.95)
+    agent_in_work=agent(main_network,learning_rate=0.0001,gamma=0.8)
     main_network,agent_in_work=load_checkpoint(main_network,agent_in_work)
     count=0
     for episode in range(episodes_given):
@@ -81,12 +81,12 @@ def trainer(episodes_given,max_step,no_of_env):
         torch.save({"model_weightes":main_network.state_dict(),"optimiser_data":agent_in_work.optimiser.state_dict(),"final_episode":episodes_given-1},path)
         print(f"checkpoint saved at this episode {episodes_given-1}")
 
-#reset_path(path)
-see=trainer(200,100,10)
-see2=trainer(200,100,10)
-see3=trainer(200,100,10)
-see4=trainer(200,100,10)
-print(efficitency_cal(800))
+reset_path(path)
+see=trainer(100,100,10)
+see2=trainer(100,100,10)
+see3=trainer(100,100,10)
+see4=trainer(100,100,10)
+print(efficitency_cal(400))
 
 
 

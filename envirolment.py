@@ -16,6 +16,7 @@ class envirolment:
         self.agent_col=0
         self.no_of_walls=no_of_walls
         self.step_count_target=step_count_max
+        self.reach_target=0
     def maze_gen(self):
         self.maze=np.full((self.rows,self.columes),self.normal_punisher_rep)
         return self.maze
@@ -89,6 +90,7 @@ class envirolment:
         if checker==-1:
             return False
         if self.agent_row==self.target_row and self.agent_col==self.target_col:
+            self.reach_target+=1
             return True
         if self.step_count_target==step_count:
             return True
@@ -100,7 +102,7 @@ class envirolment:
         status=self.action(pred_action)
         #print(status)
         if status=="no action taken":
-            reward=self.general_punisher-5000
+            reward=self.general_punisher-4000
             print(f"position {self.agent_row,self.agent_col}")
             print(f"no action on {pred_action}")
             return reward,False
@@ -128,4 +130,3 @@ class envirolment:
 
 ##make more randomnes in the maze
 #ok also add more row wise maze in the network
-    

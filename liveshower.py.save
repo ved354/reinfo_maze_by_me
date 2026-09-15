@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 from collections import deque
+import path
+import json
+import pathlib as path
+
 list=[]
 class liveplotter:
     def __init__(self,window=200):
@@ -14,3 +18,5 @@ class liveplotter:
         self.ax.set_xlabel("Step")
         self.ax.set_ylabel("Loss")
         plt.pause(0.001)
+    def individual_maze_shower(self):
+
